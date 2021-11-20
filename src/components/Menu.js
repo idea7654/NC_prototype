@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import "./Menu.css";
 import { withRouter, Route } from "react-router-dom";
 import Work_search from "./Work_search";
@@ -7,8 +7,16 @@ import WorkList from "./WorkList";
 import WorkProcess from "./WorkProcess";
 import FinishWorkList from "./FinishWorkList";
 import DailyList from "./DailyList";
+import DailyDetail from "./DailyDetail";
+import RoomContext from "../context/RoomContext";
 
 const Menu = ({ history }) => {
+  // const [title, setTitle] = React.useState("작업 절차서 다운");
+  const [Infos] = useContext(RoomContext);
+
+  useEffect(() => {
+    console.log(Infos);
+  }, []);
   return (
     <div>
       <div className="flex flex-row min-h-screen bg-gray-100 text-gray-800">
@@ -161,16 +169,18 @@ const Menu = ({ history }) => {
         </aside>
         <main className="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
           <div className="main-content flex flex-col flex-grow p-4">
-            <h1 className="font-bold text-2xl text-gray-700">
-              작업 절차서 다운
-            </h1>
+            <h1 className="font-bold text-2xl text-gray-700">{Infos.title}</h1>
             <div className="flex flex-col flex-grow border-4 border-gray-400 border-dashed bg-white rounded mt-4">
               <Route path="/menu/normal" render={() => <Work_search />} exact />
-              <Route path="/menu/new" render={() => <NewWork />} />
+              <Route
+                path="/menu/new"
+                render={(setTitle) => <NewWork setTitle={setTitle} />}
+              />
               <Route path="/menu/list" render={() => <WorkList />} />
               <Route path="/menu/process" render={() => <WorkProcess />} />
               <Route path="/menu/finish" render={() => <FinishWorkList />} />
               <Route path="/menu/daily" render={() => <DailyList />} />
+              <Route path="/menu/detail" render={() => <DailyDetail />} />
             </div>
           </div>
           <footer className="footer px-4 py-6">

@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { withRouter } from "react-router-dom";
+import RoomContext from "../context/RoomContext";
 
-const DailyList = () => {
+const DailyList = ({ history }) => {
+  const [Infos, dispatch] = useContext(RoomContext);
+
+  React.useEffect(() => {
+    dispatch({
+      type: "SET_INFO",
+      value: "작업 일지 목록",
+      name: "title",
+    });
+  }, []);
   return (
     <div>
       <div>
-        <table style={{ margin: "auto" }}>
+        <table style={{ margin: "auto", width: "100%" }}>
           <thead>
             <tr>
               <th>Document No.</th>
@@ -63,6 +74,7 @@ const DailyList = () => {
               fontSize: "15px",
               borderRadius: "5px",
             }}
+            onClick={() => history.push("/menu/detail")}
           >
             작업일지 저장
           </button>
@@ -72,4 +84,4 @@ const DailyList = () => {
   );
 };
 
-export default DailyList;
+export default withRouter(DailyList);

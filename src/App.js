@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { withRouter, Route } from "react-router-dom";
+import { useEffect } from "react/cjs/react.development";
 import Main from "./components/Main";
 import Menu from "./components/Menu";
 const App = () => {
-  const [Kuji, setKuji] = useState("");
-  // const [Kujies, setKujies] = useState([]);
   return (
     <div>
       <Route path="/" render={() => <Main />} exact />

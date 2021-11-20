@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./NewWork.css";
 import { withRouter } from "react-router-dom";
+import RoomContext from "../context/RoomContext";
 
 const WorkList = ({ history }) => {
+  const [Infos, dispatch] = useContext(RoomContext);
+
+  React.useEffect(() => {
+    dispatch({
+      type: "SET_INFO",
+      value: "수행 작업 목록",
+      name: "title",
+    });
+  }, []);
   return (
     <div>
-      <table style={{ margin: "auto" }}>
+      <table style={{ margin: "auto", width: "100%" }}>
         <thead>
           <tr>
             <th>No</th>
