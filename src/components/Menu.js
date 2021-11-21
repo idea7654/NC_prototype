@@ -21,7 +21,14 @@ const Menu = ({ history }) => {
     <div>
       <div className="flex flex-row min-h-screen bg-gray-100 text-gray-800">
         {/* <aside className="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-indigo-500"> */}
-        <aside className="sidebar w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-indigo-500">
+        <aside
+          style={
+            Infos.title == "작업 일지 목록"
+              ? { width: "42%" }
+              : { width: "16rem" }
+          }
+          className="sidebar md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-indigo-500"
+        >
           <div className="sidebar-header flex items-center justify-center py-4">
             <div className="inline-flex">
               <a href="#" className="inline-flex flex-row items-center">
