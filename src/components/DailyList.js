@@ -76,7 +76,7 @@ const DailyList = ({ history }) => {
             }}
             onClick={() => history.push("/menu/detail")}
           >
-            작업일지 저장
+            작업일지 확인
           </button>
         </div>
       </div>
