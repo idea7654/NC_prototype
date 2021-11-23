@@ -5,7 +5,7 @@ import "./Work_search.css";
 import RoomContext from "../context/RoomContext";
 
 const Work_search = ({ history }) => {
-  const color = "gray";
+  const color = "white";
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const [submit, setSubmit] = React.useState(false);
   const [targetText, setTargetText] = React.useState("작업선택 \n");
@@ -50,36 +50,39 @@ const Work_search = ({ history }) => {
         >
           <div className="w-full">
             <div className="inline-flex align-middle w-full">
-              <button
-                className={
-                  "text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 " +
-                  bgColor
-                }
-                type="button"
-                ref={btnDropdownRef}
-                onClick={() => {
-                  dropdownPopoverShow
-                    ? closeDropdownPopover()
-                    : openDropdownPopover();
-                }}
-                style={{ width: "28rem" }}
-              >
-                {targetText}
-              </button>
+              <div className="border-solid border-gray-500">
+                <button
+                  className={
+                    "border-2 border-solid border-gray-500 text-black font-bold uppercase text-sm px-6 py-3 rounded-xl mr-1 mb-1"
+                  }
+                  type="button"
+                  ref={btnDropdownRef}
+                  onClick={() => {
+                    dropdownPopoverShow
+                      ? closeDropdownPopover()
+                      : openDropdownPopover();
+                  }}
+                  style={{
+                    width: "28rem",
+                  }}
+                >
+                  {targetText}
+                </button>
+              </div>
+
               <div
                 ref={popoverDropdownRef}
                 className={
                   (dropdownPopoverShow ? "block " : "hidden ") +
                   (color === "white" ? "bg-white " : bgColor + " ") +
-                  "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+                  "border-2 border-solid border-gray-500 text-base z-50 float-left py-2 list-none text-left rounded-xl shadow-lg mt-1"
                 }
                 style={{ width: "27.8rem" }}
               >
                 <a
-                  href="#pablo"
                   className={
-                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                    (color === "white" ? " text-blueGray-700" : "text-white")
+                    "bg-white hover:bg-red-700 text-sm py-2 px-4 font-normal block w-full text-black " // +
+                    // (color === "black" ? " text-white-700" : "text-black")
                   }
                   onClick={(e) =>
                     setText(
@@ -91,9 +94,8 @@ const Work_search = ({ history }) => {
                   2.
                 </a>
                 <a
-                  href="#pablo"
                   className={
-                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    "bg-white hover:bg-red-700 text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
                     (color === "white" ? " text-blueGray-700" : "text-white")
                   }
                   onClick={(e) =>
@@ -106,9 +108,8 @@ const Work_search = ({ history }) => {
                   System, 1.
                 </a>
                 <a
-                  href="#pablo"
                   className={
-                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    "bg-white hover:bg-red-700 text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
                     (color === "white" ? " text-blueGray-700" : "text-white")
                   }
                   onClick={(e) =>
@@ -127,19 +128,39 @@ const Work_search = ({ history }) => {
       </div>
 
       <div style={{ paddingTop: "12rem" }}>
-        <button
-          style={{
-            backgroundColor: "rgb(13, 132, 212)",
-            color: "white",
-            border: "none",
-            padding: "10px 100px",
-            fontSize: "15px",
-            borderRadius: "5px",
-          }}
-          onClick={() => setShowModal(true)}
+        <div
+          className="flex justify-between"
+          style={{ marginLeft: "8rem", marginRight: "8rem" }}
         >
-          다운로드
-        </button>
+          <button
+            style={{
+              backgroundColor: "rgb(13, 132, 212)",
+              color: "white",
+              border: "none",
+              padding: "10px 10px",
+              fontSize: "15px",
+              borderRadius: "5px",
+            }}
+            onClick={() => setShowModal(true)}
+          >
+            다운로드
+          </button>
+          <button
+            style={{
+              backgroundColor: "rgb(13, 132, 212)",
+              color: "white",
+              border: "none",
+              padding: "10px 10px",
+              fontSize: "15px",
+              borderRadius: "5px",
+            }}
+            onClick={() => {
+              history.push("/menu/process");
+            }}
+          >
+            HTML절차서
+          </button>
+        </div>
       </div>
       {showModal ? (
         <>

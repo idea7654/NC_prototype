@@ -7,6 +7,8 @@ function RoomProvider({ children }) {
   const [Infos, dispatch] = useReducer(RoomReducer, {
     title: "작업 절차서 검색",
     isFirst: true,
+    isProcess: false,
+    isFinish: false,
   });
 
   return (

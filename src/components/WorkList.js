@@ -9,7 +9,7 @@ const WorkList = ({ history }) => {
   React.useEffect(() => {
     dispatch({
       type: "SET_INFO",
-      value: "수행 작업 목록",
+      value: "신청된 작업 목록",
       name: "title",
     });
   }, []);
@@ -24,11 +24,17 @@ const WorkList = ({ history }) => {
             <th>Rev.No</th>
             <th>선택</th>
           </tr>
-          <tr>
+          <tr
+            style={
+              Infos.isProcess
+                ? { backgroundColor: "lightgray" }
+                : { backgroundColor: "white" }
+            }
+          >
             <td>1</td>
             <td>JR-ROP_SI_014</td>
             <td>Channel test for Protection System</td>
-            <td>2</td>
+            <td>{Infos.isProcess ? "작업중" : "2"}</td>
             <td>
               <input type="checkbox" />
             </td>

@@ -20,10 +20,10 @@ const DailyList = ({ history }) => {
             <tr>
               <th>Document No.</th>
               <th>Title</th>
-              <th>신청</th>
-              <th>승인</th>
-              <th>완료</th>
-              <th>승인</th>
+              <th>작업신청</th>
+              <th>신청작업 승인</th>
+              <th>작업완료</th>
+              <th>완료작업승인</th>
               <th></th>
             </tr>
             <tr>

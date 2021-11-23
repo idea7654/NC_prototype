@@ -7,11 +7,13 @@ const NewWork = ({ history }) => {
   const [showModal, setShowModal] = React.useState(false);
   const [completeText, setCompleteText] = React.useState(false);
   const [Infos, dispatch] = useContext(RoomContext);
+  const [complete, setComplete] = React.useState(false);
+  const [text, setText] = React.useState("2");
 
   React.useEffect(() => {
     dispatch({
       type: "SET_INFO",
-      value: "작업 절차서 다운",
+      value: "신규 작업 신청",
       name: "title",
     });
   }, []);
@@ -26,11 +28,17 @@ const NewWork = ({ history }) => {
             <th>Rev.No</th>
             <th>선택</th>
           </tr>
-          <tr>
+          <tr
+            style={
+              complete
+                ? { backgroundColor: "lightgray" }
+                : { backgroundColor: "white" }
+            }
+          >
             <td>1</td>
             <td>JR-ROP_SI_014</td>
             <td>Channel test for Protection System</td>
-            <td>2</td>
+            <td>{text}</td>
             <td>
               <input type="checkbox" />
             </td>
@@ -138,6 +146,8 @@ const NewWork = ({ history }) => {
                         if (completeText) {
                           setShowModal(false);
                           setCompleteText(false);
+                          setComplete(true);
+                          setText("신청중");
                         } else {
                           setCompleteText(true);
                         }

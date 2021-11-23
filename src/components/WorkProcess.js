@@ -115,7 +115,12 @@ const WorkProcess = ({ history }) => {
                         type="button"
                         onClick={() => {
                           setShowModal(false);
-                          history.push("/menu/normal");
+                          history.push("/menu/list");
+                          dispatch({
+                            type: "SET_INFO",
+                            value: true,
+                            name: "isProcess",
+                          });
                         }}
                       >
                         OK

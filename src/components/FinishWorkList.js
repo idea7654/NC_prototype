@@ -30,11 +30,17 @@ const FinishWorkList = ({ history }) => {
               <th>Rev.No</th>
               <th>선택</th>
             </tr>
-            <tr>
+            <tr
+              style={
+                Infos.isFinish
+                  ? { backgroundColor: "lightblue" }
+                  : { backgroundColor: "white" }
+              }
+            >
               <td>1</td>
               <td>JR-ROP_SI_014</td>
               <td>Channel test for Protection System</td>
-              <td>2</td>
+              <td>{Infos.isFinish ? "작업완료" : "2"}</td>
               <td>
                 <input type="checkbox" />
               </td>
@@ -139,7 +145,12 @@ const FinishWorkList = ({ history }) => {
                       type="button"
                       onClick={() => {
                         setShowModal(false);
-                        history.push("/menu/normal");
+                        history.push("/menu/finish");
+                        dispatch({
+                          type: "SET_INFO",
+                          value: true,
+                          name: "isFinish",
+                        });
                       }}
                     >
                       OK
